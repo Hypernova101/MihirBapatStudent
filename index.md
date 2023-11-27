@@ -7,7 +7,7 @@ title: Student Blog
 ## By Mihir Bapat
 
 ## About Me Picture
-<img align="center" style="border:10px outset silver;" src="{{site.baseurl}}/images/Liverpool_FC.png" height="100px" alt="freeform"/>
+<img align="center" style="border:10px outset silver;" src="{{site.baseurl}}/images/Liverpool_FC.png" height="300px" alt="freeform"/>
 
 This image shows the logo of my favorite soccer team, Liverpool FC.
 
