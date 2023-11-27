@@ -5,7 +5,11 @@ title: Student Blog
 
 
 ## By Mihir Bapat
-Test images please work please please
+
+## About Me Picture
+<img align="center" style="border:10px outset silver;" src="{{site.baseurl}}/images/Liverpool_FC.png" height="100px" alt="freeform"/>
+
+This image shows the logo of my favorite soccer team, Liverpool FC.
 
 ## Overview of Hacks, Study and Tangibles
 Blogging in GitHub pages is a way to learn and code at the same time. 
