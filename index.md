@@ -9,7 +9,9 @@ title: About Me
 
 <img align="center" style="border:10px outset silver;" src="{{site.baseurl}}/images/Freeform.png" height="300px" alt="about"/>
 
-This image shows the logo of my favorite soccer team, Liverpool FC.
+This is my about me picture.
+
+This picture shows a lot about my life. It shows my favorite soccer team, Liverpool FC. 
 
 ## Overview of Hacks, Study and Tangibles
 Blogging in GitHub pages is a way to learn and code at the same time. 
