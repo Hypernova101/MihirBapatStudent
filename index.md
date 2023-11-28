@@ -7,8 +7,7 @@ title: Student Blog
 
 ## About Me Picture
 
-<img align="center" style="border:10px outset silver;" src="{{site.baseurl}}/images/photo.png" height="300px" alt="about"/>
-<img align="center" style="border:10px outset silver;" src="{{site.baseurl}}/images/Liverpool_FC.png" height="300px" alt="freeform"/>
+<img align="center" style="border:10px outset silver;" src="{{site.baseurl}}/images/Freeform.png" height="300px" alt="about"/>
 
 This image shows the logo of my favorite soccer team, Liverpool FC.
 
