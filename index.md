@@ -1,11 +1,11 @@
 ---
 layout: default
-title: About Me
+title: Home
 ---
 
 
 
-## About Me Picture
+<h1 align="center"> About Me </h1>
 
 <img align="center" style="border:10px outset silver;" src="{{site.baseurl}}/images/Freeform.png" height="300px" alt="about"/>
 
