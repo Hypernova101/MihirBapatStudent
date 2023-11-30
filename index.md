@@ -5,7 +5,7 @@ title: Home
 
 
 
-<h1 align="center"> About Me </h1>
+<h1 align="center"> About Mihir Bapat! </h1>
 <div align="center">
 <img align="center" style="border:10px outset silver;" src="{{site.baseurl}}/images/Freeform.png" height="300px" alt="about"/>
 <br>
@@ -14,5 +14,5 @@ title: Home
 
 
 
-<p align="center" style="color:white;">This picture shows a lot about my life. It shows my favorite sports teams, Liverpool FC, Mumbai Indians, and the Indian National Cricket Team. In my free time, I like to play soccer and play the piano, hence the images there. I like to play Fortnite on my Nintendo Switch and code; I want to be a Computer Scientist when I grow up. Finally, I like Math a lot and I added a picture of myself. also spotify test </p>
+<p align="center" style="color:white;">Hello! My name is Mihir Bapat. I am a Freshman at Del Norte High School with heritage in India. The above picture is my Freeform picture. It covers the very things I find to be a part of myself. To start off, I am a massive sports fan. I like to watch and play Soccer and Cricket. I support Liverpool FC in Soccer, and the Mumbai Indians and the Indian national cricket team in cricket. Finally, in my free time, I like to code, play the piano, and play Fortnite while listening to Spotify. </p>
 
