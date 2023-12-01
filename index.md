@@ -5,7 +5,19 @@ title: Home
 
 
 
-<h1 align="center"> About Mihir Bapat! </h1>
+<h1 align="center">Hi, I'm <span class="auto-type"></span></h1>
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+<script>
+    var typed = new Typed(".auto-type", {
+        strings: ["Mihir", "a Coder", "a Gamer", "a Kopite"],
+        typeSpeed: 200,
+        backSpeed: 200,
+        loop: true
+    })
+</script>
+
 <div align="center">
 <img align="center" style="border:10px outset silver;" src="{{site.baseurl}}/images/Freeform.png" height="300px" alt="about"/>
 <br>
