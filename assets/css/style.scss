@@ -66,6 +66,10 @@
     }
   }
 
+h1, h2, h3, h4 {
+  text-align: center
+}
+
   /* styling for the calculator number button */
   .calculator-number {
     @extend .button;
