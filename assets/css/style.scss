@@ -66,9 +66,29 @@
     }
   }
 
-h1, h2, h3, h4 {
-  text-align: center
+h1.project-name {
+    color: white;
 }
+
+
+h1, h2, h3, h4 {
+  text-align: center;
+  background: linear-gradient( 
+            to right, #35bde7, #0064cf); 
+        -webkit-text-fill-color: transparent; 
+        -webkit-background-clip: text;
+}
+
+p {
+  text-align: center;
+  color: white;
+}
+
+.page-header {
+  background-image: linear-gradient(#35bde7, #0064cf);
+}
+
+
 
   /* styling for the calculator number button */
   .calculator-number {
