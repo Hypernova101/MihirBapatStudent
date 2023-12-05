@@ -69,22 +69,26 @@
   /* styling for the calculator number button */
   .calculator-number {
     @extend .button;
+    color: white;
   }
 
   /* styling for the calculator operation button */
   .calculator-operation {
     @extend .button;
+    color: white;
   }
   
   /* styling for the calculator clear button */
   .calculator-clear {
     @extend .button;
+    color: white;
     background-color: #e68b1c;
   }
   
   /* styling for the calculator equals button */
   .calculator-equals {
     @extend .button;
+    color: white;
     background-color: #e70f0f;
   }
 
