@@ -19,7 +19,7 @@ title: Home
 </script>
 
 <div align="center">
-<img align="center" style="border:10px outset silver;" src="{{site.baseurl}}/images/Freeform.png" height="300px" alt="about"/>
+<img align="center" style="border:10px groove silver;border-radius: 4px; box-shadow: 0px 0px 30px #35bde7;" src="{{site.baseurl}}/images/Freeform.png" height="300px" alt="about"/>
 <br>
 <em>My about me picture</em>
 </div>
