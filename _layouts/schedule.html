@@ -39,7 +39,8 @@ Load all posts with site
 <!-- Output Column Headings for Blogs -->
 {%endcomment%}
 
-<table>
+<div style="width: 100%; display: flex; justify-content: center;">
+<table style="width: unset; display:inline;">
   <tr>
     <th>Week</th>
     <th>Plans</th>
@@ -132,4 +133,5 @@ Load all posts with site
   {% endfor %}
 
 </table>
+</div>
 {% endfor %}
