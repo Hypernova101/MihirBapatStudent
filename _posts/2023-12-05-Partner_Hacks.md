@@ -12,13 +12,13 @@ courses: { compsci: {week: 2} }
 
 <p style="animation: bounce 3s ease infinite; background: linear-gradient(to right, #C9B1FF, #FFCAF2, #FFB2B1, #FFF3AD, #BCFFBC, #A2EDFF);-webkit-text-fill-color: transparent; -webkit-background-clip: text;"> ___________________________________________________________________________________________________________</p>
 
-<div style="background: linear-gradient(to right, #35bde7, #0064cf); -webkit-text-fill-color: transparent; -webkit-background-clip: text; text-shadow: 0px 0px 30px gray; text-align: center;">
+<div style="background: linear-gradient(to right, #6d34a0, #1cfc55); -webkit-text-fill-color: transparent; -webkit-background-clip: text; text-shadow: 0px 0px 30px #44987a; text-align: center;">
     <p id="content1"></p>
 </div>
 
 <br>
 
-<div style="background: linear-gradient(to right, #DB0CEB, #F1D7A9); -webkit-text-fill-color: transparent; -webkit-background-clip: text; text-shadow: 0px 0px 20px white; text-align: center;">
+<div style="background: linear-gradient(to right, #b6a3fd, #f8677d); -webkit-text-fill-color: transparent; -webkit-background-clip: text; text-shadow: 0px 0px 20px #d787bd; text-align: center;">
     <p id="content2"></p>
 </div>
 
