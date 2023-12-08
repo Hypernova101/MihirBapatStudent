@@ -2,8 +2,8 @@
 toc: false
 comments: false
 layout: post
-title: Classic Snake Game
-description: A pretty advanced use of JavaScript building classic snake game using menu controls, key events, snake simulation and timers.
+title: Modern Snake Game
+description: New and improved snake game using controls, timers, and enhanced animations.
 type: tangibles
 courses: { compsci: {week: 2} }
 ---
@@ -42,7 +42,6 @@ courses: { compsci: {week: 2} }
     }
 
     #gameover a:hover::before, #setting a:hover::before, #menu a:hover::before{
-        content: ">";
         margin-right: 10px;
     }
 
@@ -67,43 +66,71 @@ courses: { compsci: {week: 2} }
     }
 
     #setting input:checked + label{
-        background-color: #FFF;
-        color: #000;
+        color: 	#0000FF;
+    }
+
+     #score_value {
+        font-size: 40px;
+        text-align: center;
+    }
+
+    .fs-4 {
+        font-size: 40px;
+        font-weight: bold;
+        text-align: center;
+    } 
+    .theme-dark {
+        background-color: #010203;
+        color: #fff;
+    }
+    .theme-dark h1 {
+        color: #fff;
+    }
+    .theme-light {
+        background-color: #fff;
     }
 </style>
 
 
 <div class="container">
     <header class="pb-3 mb-4 border-bottom border-primary text-dark">
-        <p class="fs-4">Snake score: <span id="score_value">0</span></p>
+        <p class="fs-4">🍏: <span id="score_value">0</span></p>
     </header>
     <div class="container bg-secondary" style="text-align:center;">
         <!-- Main Menu -->
         <div id="menu" class="py-4 text-light">
-            <p>Welcome to Snake, press <span style="background-color: #FFFFFF; color: #000000">space</span> to begin</p>
-            <a id="new_game" class="link-alert">new game</a>
-            <a id="setting_menu" class="link-alert">settings</a>
+            <p>Welcome to Snake! Press space to begin.</p>
+            <a id="new_game" class="link-alert" style="font-size: 20px;">New Game</a>
+            <a id="setting_menu" class="link-alert" style="font-size: 20px; ">Settings</a>
         </div>
         <!-- Game Over -->
-        <div id="gameover" class="py-4 text-light">
-            <p>Game Over, press <span style="background-color: #FFFFFF; color: #000000">space</span> to try again</p>
-            <a id="new_game1" class="link-alert">new game</a>
-            <a id="setting_menu1" class="link-alert">settings</a>
+        <div id="gameover" class="py-4 text-light" style="color: #D2042D; font-weight: bold;">
+            <p>GAME OVER. Press space to try again!</p>
+            <a id="new_game1" class="link-alert" style="font-size: 20px; ">New Game</a>
+            <a id="setting_menu1" class="link-alert" style="font-size: 20px; ">Settings</a>
         </div>
         <!-- Play Screen -->
-        <canvas id="snake" class="wrap" width="320" height="320" tabindex="1"></canvas>
+        <canvas id="snake" class="wrap" width="480" height="480" tabindex="1"></canvas>
         <!-- Settings Screen -->
         <div id="setting" class="py-4 text-light">
-            <p>Settings Screen, press <span style="background-color: #FFFFFF; color: #000000">space</span> to go back to playing</p>
-            <a id="new_game2" class="link-alert">new game</a>
+            <p>Settings Screen, press space to go back to playing</p>
+            <a id="new_game2" class="link-alert">New Game</a>
             <br>
             <p>Speed:
-                <input id="speed1" type="radio" name="speed" value="120" checked/>
+                <input id="speed1" type="radio" name="speed" value="95"/>
                 <label for="speed1">Slow</label>
-                <input id="speed2" type="radio" name="speed" value="75"/>
+                <input id="speed2" type="radio" name="speed" value="65" checked /> <!-- Added checked to end of the speed you want to be default -->
                 <label for="speed2">Normal</label>
                 <input id="speed3" type="radio" name="speed" value="35"/>
                 <label for="speed3">Fast</label>
+            </p>
+            <p>Theme:
+                <input type="radio" id="theme-default" name="theme" value="default" checked>
+                <label for="theme-default">Default</label>
+                <input type="radio" id="theme-dark" name="theme" value="dark">
+                <label for="theme-dark">Dark</label>
+                <input type="radio" id="theme-light" name="theme" value="light">
+                <label for="theme-light">Light</label>
             </p>
             <p>Wall:
                 <input id="wallon" type="radio" name="wall" value="1" checked/>
@@ -115,7 +142,57 @@ courses: { compsci: {week: 2} }
     </div>
 </div>
 
+<!-- Audio -->
+<audio id="pointSound" src="{{site.baseurl}}/audio/points2.wav" preload="auto"></audio>
+<audio id="lostSound" src="{{site.baseurl}}/audio/game-over.wav" preload="auto"></audio>
+<audio id="winnerSound" src="{{site.baseurl}}/audio/winner.wav" preload="auto"></audio>
+
 <script>
+    //disable arrow key scrolling
+    window.addEventListener("keydown", function(e) { if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].indexOf(e.code) > -1) { e.preventDefault(); } }, false);
+
+
+    // Add a function to handle theme switching
+    function switchTheme(theme) {
+        const body = document.body;
+
+        // Reset all theme-related classes
+        body.classList.remove('theme-default', 'theme-dark', 'theme-light');
+
+        // Apply the selected theme class
+        body.classList.add(`theme-${theme}`);
+    }
+
+    // Add event listeners to the theme radio buttons
+    const themeRadios = document.getElementsByName('theme');
+    themeRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            const selectedTheme = document.querySelector('input[name="theme"]:checked').value;
+            switchTheme(selectedTheme);
+        });
+    });
+
+    // Initialize with the default theme
+    switchTheme('default');
+
+    //Sound when food is picked up 
+    function playPointSound() {
+    const pointSound = document.getElementById("pointSound");
+    pointSound.play();
+    }
+
+    //Sound when game ends
+    function playLostSound() {
+    const lostSound = document.getElementById("lostSound");
+    lostSound.play();
+    }
+
+    //Sound for score 20
+    function playWinnerSound() {
+    const winnerSound = document.getElementById("winnerSound");
+    winnerSound.play();
+    }
+
     (function(){
         /* Attributes of Game */
         /////////////////////////////////////////////////////////////
@@ -153,7 +230,7 @@ courses: { compsci: {week: 2} }
         /////////////////////////////////////////////////////////////
         // 0 for the game
         // 1 for the main menu
-        // 2 for the settings screen
+        // 2 for the Settings screen
         // 3 for the game over screen
         let showScreen = function(screen_opt){
             SCREEN = screen_opt;
@@ -187,8 +264,8 @@ courses: { compsci: {week: 2} }
             button_new_game2.onclick = function(){newGame();};
             button_setting_menu.onclick = function(){showScreen(SCREEN_SETTING);};
             button_setting_menu1.onclick = function(){showScreen(SCREEN_SETTING);};
-            // speed
-            setSnakeSpeed(150);
+            // speed (initial speed on game reboot)
+            setSnakeSpeed(55);
             for(let i = 0; i < speed_setting.length; i++){
                 speed_setting[i].addEventListener("click", function(){
                     for(let i = 0; i < speed_setting.length; i++){
@@ -236,6 +313,7 @@ courses: { compsci: {week: 2} }
                 // Wall on, Game over test
                 if (snake[0].x < 0 || snake[0].x === canvas.width / BLOCK || snake[0].y < 0 || snake[0].y === canvas.height / BLOCK){
                     showScreen(SCREEN_GAME_OVER);
+                    playLostSound();
                     return;
                 }
             }else{
@@ -260,6 +338,7 @@ courses: { compsci: {week: 2} }
                 // Game over test
                 if (snake[0].x === snake[i].x && snake[0].y === snake[i].y){
                     showScreen(SCREEN_GAME_OVER);
+                    playLostSound();
                     return;
                 }
             }
@@ -269,22 +348,49 @@ courses: { compsci: {week: 2} }
                 altScore(++score);
                 addFood();
                 activeDot(food.x, food.y);
+
+                playPointSound();
+
+            //If the score is 20 or above, do the following
+              if(score >= 20) {
+                    canvas.style.borderColor = "#ffcc00";
+                    // Check if canvas size has been shrunk
+                    if(canvas.width !== 500) {
+                        canvas.width = 500;
+                        canvas.height = 500.
+                    }
+                    if(score === 20) {
+                        playWinnerSound();
+                    }
+                }
+                else {
+
+                    if(canvas.width !== 480) {
+                        canvas.width = 500;
+                        canvas.height = 500;
+                    }
+                }
             }
+
             // Repaint canvas
+            const my_gradient = ctx.createLinearGradient(0, 0, 170, 0);
+            my_gradient.addColorStop(0, "#35bde7")
+            my_gradient.addColorStop(1, "#0064cf")
             ctx.beginPath();
-            ctx.fillStyle = "royalblue";
+            ctx.fillStyle = my_gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             // Paint snake
             for(let i = 0; i < snake.length; i++){
                 activeDot(snake[i].x, snake[i].y);
             }
             // Paint food
-            activeDot(food.x, food.y);
+            activeDot2(food.x, food.y);
             // Debug
             //document.getElementById("debug").innerHTML = snake_dir + " " + snake_next_dir + " " + snake[0].x + " " + snake[0].y;
             // Recursive call after speed delay, déjà vu
             setTimeout(mainLoop, snake_speed);
         }
+
         /* New Game setup */
         /////////////////////////////////////////////////////////////
         let newGame = function(){
@@ -293,10 +399,23 @@ courses: { compsci: {week: 2} }
             screen_snake.focus();
             // game score to zero
             score = 0;
+            // Reset Canvas Size
+            canvas.width = 480;
+            canvas.height = 480;
+            //Reset Border Color
+            const selectedTheme = document.querySelector('input[name="theme"]:checked').value; // Checks what the current theme is
+            if (selectedTheme === 'dark') {
+                canvas.style.borderColor = "#FFFFFF";
+            } else {
+                canvas.style.borderColor = "#B2BEB5";
+            }
             altScore(score);
             // initial snake
             snake = [];
-            snake.push({x: 0, y: 15});
+            snake.push({x: 3, y: 15}); // Head (3, 15)
+            snake.push({x: 2, y: 15}); // Second Segment (2, 15)
+            snake.push({x: 1, y: 15}); // Third segment (1, 15)
+            snake.push({x: 0, y: 15}); // Fourth segment (0, 15)
             snake_next_dir = 1;
             // food on canvas
             addFood();
@@ -311,19 +430,23 @@ courses: { compsci: {week: 2} }
         let changeDir = function(key){
             // test key and switch direction
             switch(key) {
-                case 37:    // left arrow
+                case 65:    // A (Left)
+                case 37:
                     if (snake_dir !== 1)    // not right
                         snake_next_dir = 3; // then switch left
                     break;
-                case 38:    // up arrow
+                case 87:    // W (Up)
+                case 38:
                     if (snake_dir !== 2)    // not down
                         snake_next_dir = 0; // then switch up
                     break;
-                case 39:    // right arrow
+                case 68:    // D (Right)
+                case 39:
                     if (snake_dir !== 3)    // not left
                         snake_next_dir = 1; // then switch right
                     break;
-                case 40:    // down arrow
+                case 83:    // S (Down)
+                case 40:
                     if (snake_dir !== 0)    // not up
                         snake_next_dir = 2; // then switch down
                     break;
@@ -331,9 +454,22 @@ courses: { compsci: {week: 2} }
         }
         /* Dot for Food or Snake part */
         /////////////////////////////////////////////////////////////
+
+        //Color for Snake
         let activeDot = function(x, y){
-            ctx.fillStyle = "#FFFFFF";
+            if (score >= 20) {
+                ctx.fillStyle = "#00FF85";
+            }
+            else {
+                ctx.fillStyle = "#7CFC00";
+            }
             ctx.fillRect(x * BLOCK, y * BLOCK, BLOCK, BLOCK);
+        }
+
+        // Color for Apple
+        let activeDot2 = function(x, y){
+            ctx.fillStyle = "#DC143C";
+            ctx.fillText("🍏", x * BLOCK, y * BLOCK + BLOCK);
         }
         /* Random food placement */
         /////////////////////////////////////////////////////////////
@@ -368,7 +504,7 @@ courses: { compsci: {week: 2} }
         let setWall = function(wall_value){
             wall = wall_value;
             if(wall === 0){screen_snake.style.borderColor = "#606060";}
-            if(wall === 1){screen_snake.style.borderColor = "#FFFFFF";}
+            if(wall === 1){screen_snake.style.borderColor = "#B2BEB5";}
         }
     })();
 </script>
