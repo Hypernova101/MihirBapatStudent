@@ -5,7 +5,7 @@ layout: post
 title: Modern Snake Game
 description: New and improved snake game using controls, timers, and enhanced animations.
 type: tangibles
-courses: { compsci: {week: 2} }
+courses: { compsci: {week: 3} }
 ---
 
 <style>
@@ -374,8 +374,8 @@ courses: { compsci: {week: 2} }
 
             // Repaint canvas
             const my_gradient = ctx.createLinearGradient(0, 0, 170, 0);
-            my_gradient.addColorStop(0, "#35bde7")
-            my_gradient.addColorStop(1, "#0064cf")
+            my_gradient.addColorStop(0, "#04064b")
+            my_gradient.addColorStop(1, "#07052a")
             ctx.beginPath();
             ctx.fillStyle = my_gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
