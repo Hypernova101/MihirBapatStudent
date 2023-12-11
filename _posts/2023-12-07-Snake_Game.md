@@ -5,7 +5,7 @@ layout: post
 title: Modern Snake Game
 description: New and improved snake game using controls, timers, and enhanced animations.
 type: tangibles
-courses: { compsci: {week: 2} }
+courses: { compsci: {week: 3} }
 ---
 
 <style>
@@ -107,7 +107,7 @@ courses: { compsci: {week: 2} }
         </div>
         <!-- Game Over -->
         <div id="gameover" class="py-4 text-light" style="color: #D2042D; font-weight: bold;">
-            <p>GAME OVER. Press space to try again!</p>
+            <p style="color:red">Game over. Press space to try again!</p>
             <a id="new_game1" class="link-alert" style="font-size: 20px; ">New Game</a>
             <a id="setting_menu1" class="link-alert" style="font-size: 20px; ">Settings</a>
         </div>
@@ -376,8 +376,8 @@ courses: { compsci: {week: 2} }
 
             // Repaint canvas
             const my_gradient = ctx.createLinearGradient(0, 0, 170, 0);
-            my_gradient.addColorStop(0, "#35bde7")
-            my_gradient.addColorStop(1, "#0064cf")
+            my_gradient.addColorStop(0, "#04064b")
+            my_gradient.addColorStop(1, "#07052a")
             ctx.beginPath();
             ctx.fillStyle = my_gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
