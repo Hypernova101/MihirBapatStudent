@@ -66,7 +66,9 @@ courses: { compsci: {week: 2} }
     }
 
     #setting input:checked + label{
-        color: 	#0000FF;
+        background: linear-gradient(to right, #A091FF, #9061BA); 
+        -webkit-text-fill-color: transparent; 
+        -webkit-background-clip: text;
     }
 
      #score_value {
