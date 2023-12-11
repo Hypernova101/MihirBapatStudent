@@ -105,7 +105,7 @@ courses: { compsci: {week: 3} }
         </div>
         <!-- Game Over -->
         <div id="gameover" class="py-4 text-light" style="color: #D2042D; font-weight: bold;">
-            <p>GAME OVER. Press space to try again!</p>
+            <p style="color:red">Game over. Press space to try again!</p>
             <a id="new_game1" class="link-alert" style="font-size: 20px; ">New Game</a>
             <a id="setting_menu1" class="link-alert" style="font-size: 20px; ">Settings</a>
         </div>
