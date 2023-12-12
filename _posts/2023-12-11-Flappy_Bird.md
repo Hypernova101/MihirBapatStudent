@@ -159,6 +159,7 @@ courses: { compsci: {week: 3} }
 
             if (!pipe.passed && bird.x > pipe.x + pipe.width) {
                 score += 0.5; //0.5 because there are 2 pipes! so 0.5*2 = 1, 1 for each set of pipes
+                playPointSound();
                 pipe.passed = true;
             }
 
@@ -218,7 +219,6 @@ courses: { compsci: {week: 3} }
         if (e.code == "Space" || e.code == "ArrowUp" || e.code == "KeyX") {
             //jump
             velocityY = -6;
-            playPointSound();
 
             //reset game
             if (gameOver) {
