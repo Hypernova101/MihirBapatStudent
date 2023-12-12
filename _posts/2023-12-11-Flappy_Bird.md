@@ -9,10 +9,25 @@ courses: { compsci: {week: 3} }
 ---
 
 
-<br>
-<br>
-<br>
-
+<div class="container">
+    <header class="pb-3 mb-4 border-bottom border-primary text-dark">
+        <p class="fs-4">🍏: <span id="score">0</span></p>
+    </header>
+    <div class="container bg-secondary" style="text-align:center;">
+        <!-- Main Menu -->
+        <div id="menu" class="py-4 text-light">
+            <p>Welcome to Snake! Press space to begin.</p>
+            <a id="new_game" class="link-alert" style="font-size: 20px;">New Game</a>
+        </div>
+        <!-- Game Over -->
+        <div id="gameover" class="py-4 text-light" style="color: #D2042D; font-weight: bold;">
+            <p>GAME OVER. Press space to try again!</p>
+            <a id="new_game1" class="link-alert" style="font-size: 20px; ">New Game</a>
+        </div>
+        <!-- Play Screen -->
+        <canvas id="snake" class="wrap" width="480" height="480" tabindex="1"></canvas>
+    </div>
+</div>
 
 <style>
     body {
@@ -221,6 +236,23 @@ courses: { compsci: {week: 3} }
             a.y < b.y + b.height &&  //a's top left corner doesn't reach b's bottom left corner
             a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
     }
+
+    let newGame = function(){
+            showScreen(SCREEN_SNAKE);
+            screen_snake.focus();
+            score = 0;
+            canvas.width = 480;
+            canvas.height = 480;
+            const selectedTheme = document.querySelector('input[name="theme"]:checked').value;
+            if (selectedTheme === 'dark') {
+                canvas.style.borderColor = "#FFFFFF";
+            } else {
+                canvas.style.borderColor = "#B2BEB5";
+            }
+            canvas.onkeydown = function(evt) {
+                changeDir(evt.keyCode);
+            };
+        };
 
 </script> 
 
