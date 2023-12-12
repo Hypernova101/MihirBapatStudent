@@ -395,21 +395,6 @@ courses: { compsci: {week: 2} }
 
         /* New Game setup */
         /////////////////////////////////////////////////////////////
-        let countdown = 3; // Initial countdown value
-
-        let startCountdown = function() {
-            if (countdown > 0) {
-                ctx.font = "60px Arial";
-                ctx.fillStyle = "#fff";
-                ctx.textAlign = "center";
-                ctx.fillText(countdown, canvas.width / 2, canvas.height / 2);
-                countdown--;
-
-                setTimeout(startCountdown, 1000); // Countdown every second
-            } else {
-                newGame();
-            }
-        };
 
         let newGame = function(){
             showScreen(SCREEN_SNAKE);

@@ -9,6 +9,11 @@ courses: { compsci: {week: 3} }
 ---
 
 
+<br>
+<br>
+<br>
+
+
 <style>
     body {
         text-align: center;
@@ -216,6 +221,23 @@ courses: { compsci: {week: 3} }
             a.y < b.y + b.height &&  //a's top left corner doesn't reach b's bottom left corner
             a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
     }
+
+    let newGame = function(){
+            showScreen(SCREEN_SNAKE);
+            screen_snake.focus();
+            score = 0;
+            canvas.width = 480;
+            canvas.height = 480;
+            const selectedTheme = document.querySelector('input[name="theme"]:checked').value;
+            if (selectedTheme === 'dark') {
+                canvas.style.borderColor = "#FFFFFF";
+            } else {
+                canvas.style.borderColor = "#B2BEB5";
+            }
+            canvas.onkeydown = function(evt) {
+                changeDir(evt.keyCode);
+            };
+        };
 
 </script> 
 
