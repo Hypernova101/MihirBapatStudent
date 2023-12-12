@@ -5,7 +5,7 @@ layout: post
 title: Modern Snake Game
 description: New and improved snake game using controls, timers, and enhanced animations.
 type: tangibles
-courses: { compsci: {week: 2} }
+courses: { compsci: {week: 3} }
 ---
 
 <style>
@@ -425,8 +425,8 @@ courses: { compsci: {week: 2} }
             canvas.onkeydown = function(evt) {
                 changeDir(evt.keyCode);
             }
-            startCountdown();
-        };
+            mainLoop();
+        }
         /* Key Inputs and Actions */
         /////////////////////////////////////////////////////////////
         let changeDir = function(key){
