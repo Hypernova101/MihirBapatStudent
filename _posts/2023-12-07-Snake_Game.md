@@ -419,7 +419,6 @@ courses: { compsci: {week: 2} }
             canvas.onkeydown = function(evt) {
                 changeDir(evt.keyCode);
             }
-            startCountdown();
         };
         /* Key Inputs and Actions */
         /////////////////////////////////////////////////////////////
