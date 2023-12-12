@@ -5,7 +5,7 @@ layout: post
 title: Modern Snake Game
 description: New and improved snake game using controls, timers, and enhanced animations.
 type: tangibles
-courses: { compsci: {week: 3} }
+courses: { compsci: {week: 2} }
 ---
 
 <style>
@@ -107,7 +107,7 @@ courses: { compsci: {week: 3} }
         </div>
         <!-- Game Over -->
         <div id="gameover" class="py-4 text-light" style="color: #D2042D; font-weight: bold;">
-            <p style="color:red">Game over. Press space to try again!</p>
+            <p>GAME OVER. Press space to try again!</p>
             <a id="new_game1" class="link-alert" style="font-size: 20px; ">New Game</a>
             <a id="setting_menu1" class="link-alert" style="font-size: 20px; ">Settings</a>
         </div>
@@ -376,8 +376,8 @@ courses: { compsci: {week: 3} }
 
             // Repaint canvas
             const my_gradient = ctx.createLinearGradient(0, 0, 170, 0);
-            my_gradient.addColorStop(0, "#04064b")
-            my_gradient.addColorStop(1, "#07052a")
+            my_gradient.addColorStop(0, "#35bde7")
+            my_gradient.addColorStop(1, "#0064cf")
             ctx.beginPath();
             ctx.fillStyle = my_gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -395,38 +395,47 @@ courses: { compsci: {week: 3} }
 
         /* New Game setup */
         /////////////////////////////////////////////////////////////
+        let countdown = 3; // Initial countdown value
+
+        let startCountdown = function() {
+            if (countdown > 0) {
+                ctx.font = "60px Arial";
+                ctx.fillStyle = "#fff";
+                ctx.textAlign = "center";
+                ctx.fillText(countdown, canvas.width / 2, canvas.height / 2);
+                countdown--;
+
+                setTimeout(startCountdown, 1000); // Countdown every second
+            } else {
+                newGame();
+            }
+        };
+
         let newGame = function(){
-            // snake game screen
             showScreen(SCREEN_SNAKE);
             screen_snake.focus();
-            // game score to zero
             score = 0;
-            // Reset Canvas Size
             canvas.width = 480;
             canvas.height = 480;
-            //Reset Border Color
-            const selectedTheme = document.querySelector('input[name="theme"]:checked').value; // Checks what the current theme is
+            const selectedTheme = document.querySelector('input[name="theme"]:checked').value;
             if (selectedTheme === 'dark') {
                 canvas.style.borderColor = "#FFFFFF";
             } else {
                 canvas.style.borderColor = "#B2BEB5";
             }
             altScore(score);
-            // initial snake
             snake = [];
-            snake.push({x: 3, y: 15}); // Head (3, 15)
-            snake.push({x: 2, y: 15}); // Second Segment (2, 15)
-            snake.push({x: 1, y: 15}); // Third segment (1, 15)
-            snake.push({x: 0, y: 15}); // Fourth segment (0, 15)
+            snake.push({x: 3, y: 15});
+            snake.push({x: 2, y: 15});
+            snake.push({x: 1, y: 15});
+            snake.push({x: 0, y: 15});
             snake_next_dir = 1;
-            // food on canvas
             addFood();
-            // activate canvas event
             canvas.onkeydown = function(evt) {
                 changeDir(evt.keyCode);
             }
-            mainLoop();
-        }
+            startCountdown();
+        };
         /* Key Inputs and Actions */
         /////////////////////////////////////////////////////////////
         let changeDir = function(key){
