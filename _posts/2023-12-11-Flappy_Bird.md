@@ -3,15 +3,10 @@ toc: false
 comments: false
 layout: post
 title: Flappy Bird Game
-description: Flappy Bird
+description: A new Flappy Bird game that combines audio and canvas with pipe structure.
 type: tangibles
 courses: { compsci: {week: 3} }
 ---
-
-
-<br>
-<br>
-<br>
 
 
 <style>
@@ -160,7 +155,7 @@ courses: { compsci: {week: 3} }
 
         //score
         context.fillStyle = "red";
-        context.font="45px sans-serif";
+        context.font="45px Open Sans";
         context.fillText(score, 5, 45);
 
         if (gameOver) {
