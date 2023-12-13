@@ -18,6 +18,7 @@ courses: { compsci: {week: 3} }
     }
 
     canvas{
+        border-radius: 4px; box-shadow: 0px 0px 30px #35bde7;
         display: none;
         border-style: solid;
         border-width: 10px;
@@ -110,6 +111,7 @@ courses: { compsci: {week: 3} }
             <p style="color:red">Game over. Press space to try again!</p>
             <a id="new_game1" class="link-alert" style="font-size: 20px; ">New Game</a>
             <a id="setting_menu1" class="link-alert" style="font-size: 20px; ">Settings</a>
+            <br>
         </div>
         <!-- Play Screen -->
         <canvas id="snake" class="wrap" width="480" height="480" tabindex="1"></canvas>
@@ -359,7 +361,7 @@ courses: { compsci: {week: 3} }
                     // Check if canvas size has been shrunk
                     if(canvas.width !== 500) {
                         canvas.width = 500;
-                        canvas.height = 500.
+                        canvas.height = 500;
                     }
                     if(score === 20) {
                         playWinnerSound();
