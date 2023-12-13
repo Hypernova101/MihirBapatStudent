@@ -21,7 +21,7 @@ courses: { compsci: {week: 3} }
 
     #board {
         /* background-color: skyblue; */
-        background-image: url("{{site.baseurl}}/flappybirdsrc/flappybirdbg.png");
+        background-image: url("{{site.baseurl}}/flappybirdsrc/flappybirdbg.png")
     }
 
 </style>
