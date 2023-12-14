@@ -139,7 +139,12 @@ courses: { compsci: {week: 3} }
         //pipes
         for (let i = 0; i < pipeArray.length; i++) {
             let pipe = pipeArray[i];
+           
+            var scorediff = score;
             pipe.x += velocityX;
+            pipe.x -= 10;
+            
+
             context.drawImage(pipe.img, pipe.x, pipe.y, pipe.width, pipe.height);
 
             if (!pipe.passed && bird.x > pipe.x + pipe.width) {
@@ -221,24 +226,6 @@ courses: { compsci: {week: 3} }
             a.y < b.y + b.height &&  //a's top left corner doesn't reach b's bottom left corner
             a.y + a.height > b.y;    //a's bottom left corner passes b's top left corner
     }
-
-    let newGame = function(){
-            showScreen(SCREEN_SNAKE);
-            screen_snake.focus();
-            score = 0;
-            canvas.width = 480;
-            canvas.height = 480;
-            const selectedTheme = document.querySelector('input[name="theme"]:checked').value;
-            if (selectedTheme === 'dark') {
-                canvas.style.borderColor = "#FFFFFF";
-            } else {
-                canvas.style.borderColor = "#B2BEB5";
-            }
-            canvas.onkeydown = function(evt) {
-                changeDir(evt.keyCode);
-            };
-        };
-
 </script> 
 
 
