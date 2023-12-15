@@ -90,7 +90,7 @@ courses: { compsci: {week: 3} }
         color: #fff;
     }
     .theme-light {
-        background-color: #fff;
+        background-color: #E8DACC;
     }
 </style>
 
