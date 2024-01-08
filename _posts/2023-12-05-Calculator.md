@@ -20,10 +20,12 @@ courses: { compsci: {week: 2} }
   
     padding: 0.25em;
     font-size: 20px;
-    border: 5px solid black;
+    border: 5px solid white;
   
     display: flex;
     align-items: center;
+
+    color: white;
   }
 </style>
 
@@ -48,6 +50,11 @@ courses: { compsci: {week: 2} }
       <div class="calculator-number">9</div>
       <div class="calculator-operation">*</div>
       <!--row 4-->
+      <div class="calculator-operation">/</div>
+      <div class="calculator-operation">^</div>
+      <div class="calculator-operation">lcm</div>
+      <div class="calculator-operation">√</div>
+      <!--row 5-->
       <div class="calculator-clear">A/C</div>
       <div class="calculator-number">0</div>
       <div class="calculator-number">.</div>
@@ -132,6 +139,25 @@ courses: { compsci: {week: 2} }
           case "/":
               result = first / second;
               break;
+          case "^":
+              result = first ** second;
+              break;
+          case "√":
+              let root = 1/second
+              result = Math.pow(first, root)
+              break;
+          case "lcm":
+              let min = (first > second) ? first : second;
+              // while loop
+              while (true) {
+                  if (min % first == 0 && min % second == 0) {
+                      result = min
+                      break;
+                  }
+                  min++;
+              }
+              break;
+          
           default: 
               break;
       }
