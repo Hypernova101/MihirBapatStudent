@@ -157,7 +157,7 @@ courses: { compsci: {week: 2} }
                   min++;
               }
               break;
-          
+              
           default: 
               break;
       }

@@ -142,6 +142,7 @@ courses: { compsci: {week: 3} }
            
             var scorediff = score;
             pipe.x += velocityX;
+            pipe.x -= 2;
             
 
             context.drawImage(pipe.img, pipe.x, pipe.y, pipe.width, pipe.height);
