@@ -21,15 +21,15 @@ permalink: /tangibles/week7
 <body>
     <div class="text-center">
         <canvas id="spriteContainer"> <!-- Within the base div is a canvas. An HTML canvas is used only for graphics. It allows the user to access some basic functions related to the image created on the canvas (including animation) -->
-            <img id="dogSprite" src="{{site.baseurl}}/images/CashSprite.png">  // change sprite here
+            <img id="cashSprite" src="{{site.baseurl}}/images/CashSprite.png">  // change sprite here
         </canvas>
         <div id="controls"> <!--basic radio buttons which can be used to check whether each individual animaiton works -->
             <input type="radio" name="animation" id="idle" checked>
             <label for="idle">Idle</label><br>
-            <input type="radio" name="animation" id="barking">
-            <label for="barking">Glowing</label><br>
-            <input type="radio" name="animation" id="walking">
-            <label for="walking">Bouncing</label><br>
+            <input type="radio" name="animation" id="glowing">
+            <label for="glowing">Glowing</label><br>
+            <input type="radio" name="animation" id="bouncing">
+            <label for="bouncing">Bouncing</label><br>
         </div>
     </div>
 </body>
@@ -47,9 +47,9 @@ permalink: /tangibles/week7
         canvas.width = SPRITE_WIDTH * SCALE_FACTOR;
         canvas.height = SPRITE_HEIGHT * SCALE_FACTOR;
 
-        class Dog {
+        class Cash {
             constructor() {
-                this.image = document.getElementById("dogSprite");
+                this.image = document.getElementById("cashSprite");
                 this.x = 0;
                 this.y = 0;
                 this.minFrame = 0;
@@ -58,7 +58,7 @@ permalink: /tangibles/week7
                 this.frameY = 0;
             }
 
-            // draw dog object
+            // draw cash object
             draw(context) {
                 context.drawImage(
                     this.image,
@@ -83,23 +83,23 @@ permalink: /tangibles/week7
             }
         }
 
-        // dog object
-        const dog = new Dog();
+        // cash object
+        const cash = new Cash();
 
-        // update frameY of dog object, action from idle, bark, walk radio control
+        // update frameY of cash object, action from idle, glow, bounce radio control
         const controls = document.getElementById('controls');
         controls.addEventListener('click', function (event) {
             if (event.target.tagName === 'INPUT') {
                 const selectedAnimation = event.target.id;
                 switch (selectedAnimation) {
                     case 'idle':
-                        dog.frameY = 0;
+                        cash.frameY = 0;
                         break;
-                    case 'barking':
-                        dog.frameY = 1;
+                    case 'glowing':
+                        cash.frameY = 1;
                         break;
-                    case 'walking':
-                        dog.frameY = 2;
+                    case 'bouncing':
+                        cash.frameY = 2;
                         break;
                     default:
                         break;
@@ -113,16 +113,16 @@ permalink: /tangibles/week7
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             // Draws the current frame of the sprite.
-            dog.draw(ctx);
+            cash.draw(ctx);
 
             // Updates the `frameX` property to prepare for the next frame in the sprite sheet.
-            dog.update();
+            cash.update();
 
             // Uses `requestAnimationFrame` to synchronize the animation loop with the display's refresh rate,
             // ensuring smooth visuals.
             setTimeout(function() {
 
-                dog.update();
+                cash.update();
                 
                 requestAnimationFrame(animate);
             }, 150);
