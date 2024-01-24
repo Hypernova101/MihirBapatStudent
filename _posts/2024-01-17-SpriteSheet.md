@@ -5,13 +5,21 @@ layout: post
 title: Sprite Sheet
 description: Sprite Sheet Animation
 type: tangibles
-courses: { compsci: {week: 4} }
-permalink: /tangibles/week4
+courses: { compsci: {week: 7} }
+permalink: /tangibles/week7
 ---
+
+<style>
+.text-center{
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+}
+</style>
 
 
 <body>
-    <div>
+    <div class="text-center">
         <canvas id="spriteContainer"> <!-- Within the base div is a canvas. An HTML canvas is used only for graphics. It allows the user to access some basic functions related to the image created on the canvas (including animation) -->
             <img id="dogSprite" src="{{site.baseurl}}/images/CashSprite.png">  // change sprite here
         </canvas>
@@ -117,7 +125,7 @@ permalink: /tangibles/week4
                 dog.update();
                 
                 requestAnimationFrame(animate);
-            }, 70);
+            }, 150);
         }
 
         // run 1st animate
