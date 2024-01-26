@@ -24,8 +24,8 @@ permalink: /tangibles/week7
             <img id="cashSprite" src="{{site.baseurl}}/images/CashSprite.png">  // change sprite here
         </canvas>
         <div id="controls"> <!--basic radio buttons which can be used to check whether each individual animaiton works -->
-            <input type="radio" name="animation" id="idle" checked>
-            <label for="idle">Idle</label><br>
+            <input type="radio" name="animation" id="breaking" checked>
+            <label for="breaking">Breaking</label><br>
             <input type="radio" name="animation" id="glowing">
             <label for="glowing">Glowing</label><br>
             <input type="radio" name="animation" id="bouncing">
@@ -86,13 +86,13 @@ permalink: /tangibles/week7
         // cash object
         const cash = new Cash();
 
-        // update frameY of cash object, action from idle, glow, bounce radio control
+        // update frameY of cash object, action from breaking, glow, bounce radio control
         const controls = document.getElementById('controls');
         controls.addEventListener('click', function (event) {
             if (event.target.tagName === 'INPUT') {
                 const selectedAnimation = event.target.id;
                 switch (selectedAnimation) {
-                    case 'idle':
+                    case 'breaking':
                         cash.frameY = 0;
                         break;
                     case 'glowing':
