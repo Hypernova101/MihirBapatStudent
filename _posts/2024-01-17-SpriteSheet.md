@@ -5,8 +5,8 @@ layout: post
 title: Sprite Sheet
 description: Sprite Sheet Animation
 type: tangibles
-courses: { compsci: {week: 7} }
-permalink: /tangibles/week7
+courses: { compsci: {week: 6} }
+permalink: /tangibles/week6
 ---
 
 <style>
